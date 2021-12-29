@@ -5,18 +5,22 @@
 
       <div *ngIf="orderHistoryList.length > 0">
         <table class="table table-bordered">
-          <tr>
-            <th width="20%">Order tracking number</th>
-            <th width="10%">Total value</th>
-            <th width="10%">Total quantity</th>
-            <th width="10%">date</th>
-          </tr>
-          <tr *ngFor="let orderHistory of orderHistoryList">
-            <td>{{ orderHistory.orderTrackingNumber }}</td>
-            <td>{{ orderHistory.totalValue | currency: 'USD' }}</td>
-            <td>{{ orderHistory.totalQuantity }}</td>
-            <td>{{ orderHistory.dateCreated |date:  'yyyy-MM-dd HH:mm' }}</td>
-          </tr>
+          <thead>
+            <tr>
+              <th width="20%">Order tracking number</th>
+              <th width="10%">Total value</th>
+              <th width="10%">Total quantity</th>
+              <th width="10%">date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let orderHistory of orderHistoryList">
+              <td>{{ orderHistory.orderTrackingNumber }}</td>
+              <td>{{ orderHistory.totalValue | currency: 'USD' }}</td>
+              <td>{{ orderHistory.totalQuantity }}</td>
+              <td>{{ orderHistory.dateCreated |date:  'yyyy-MM-dd HH:mm' }}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
 
