@@ -23,6 +23,7 @@ export class CheckoutComponent implements OnInit {
   checkoutFormGroup: FormGroup;
   totalValue: number = 0;
   totalQuantity: number = 0;
+  purchaseButtonDisabled: boolean = false;
 
   creditCardMonths: number[] = [];
   creditCardYears: number[] = [];
@@ -167,6 +168,9 @@ export class CheckoutComponent implements OnInit {
 
     if (!this.checkoutFormGroup.invalid && this.displayError.textContent === "") {
 
+      //disable purchase button
+      this.purchaseButtonDisabled = true;
+    
       //create payment intent
       this.checkoutService.createPaymentIntent(this.paymentInfo).subscribe(
         paymentIntentResponse => {
@@ -192,6 +196,7 @@ export class CheckoutComponent implements OnInit {
             .then(function (this: CheckoutComponent, result: any) {
               if (result.error) {
                 alert(`There was an error: ${result.error.message}`);
+                this.purchaseButtonDisabled = false;
               } else {
                 //on success
                 //call REST API via Checkout Service
@@ -199,9 +204,11 @@ export class CheckoutComponent implements OnInit {
                   next: response => {
                     alert(`Your order has been received.\n Order tracking number is ${response.orderTrackingNumber}`);
                     this.resetCart();
+                    this.purchaseButtonDisabled = false;
                   },
                   error: err => {
-                    alert(`There was an error ${err.message}`)
+                    alert(`There was an error ${err.message}`);
+                    this.purchaseButtonDisabled = false;
                   }
                 });
                 //on sucess end
