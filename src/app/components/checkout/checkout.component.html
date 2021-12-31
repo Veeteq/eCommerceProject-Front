@@ -215,7 +215,7 @@
         </div>
         <!-- End of Billing address group-->
 
-        <!-- Creait card group-->
+        <!-- Creait card group--><!--
         <div formGroupName="creditCard" class="form-area">
           <h3>Credit Card</h3>
           <div class="row">
@@ -299,8 +299,20 @@
               </div>
             </div>
           </div>                          
-        </div>  
+        </div> -->  
         <!-- End of Credit card group-->
+
+         <!-- Stripe Credit card group-->
+        <div formGroupName="creditCard" class="form-area">
+          <h3>Credit Card</h3>
+          <div id="card-element">
+            <!-- Here comes the Stripe element-->
+          </div>
+          <div id="card-errors" class="displayError.textContent !== '' : 'alert alert-danget mt-1'">
+          </div>            
+
+        </div>
+        <!-- End of Stripe Credit card group-->
 
         <!-- Order summary-->
         <div class="form-area">
