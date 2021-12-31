@@ -25,7 +25,6 @@ export class ProductListComponent implements OnInit {
   constructor(private productService: ProductService, private cartService: CartService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log('inside ngOnInit');
     this.route.paramMap.subscribe(() => {
       this.listProducts();
     });
@@ -60,7 +59,6 @@ export class ProductListComponent implements OnInit {
   }
 
   handleListProducts() {
-    console.log('inside handleListProducts');
     const hasCategoryId = this.route.snapshot.paramMap.has('id');
 
     if (hasCategoryId) {
